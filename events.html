@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Upcoming events at Grace Community Church — services, youth nights, seminars, outreach, and community gatherings." />
+  <title>Events — Grace Community Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .events-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1.5px solid var(--color-border);
+      background: white;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      color: var(--color-text-soft);
+    }
+    .filter-btn--active, .filter-btn:hover {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
+    }
+    .event-full {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      gap: 0;
+      transition: box-shadow var(--transition-base);
+    }
+    .event-full:hover { box-shadow: var(--shadow-md); }
+    .event-full__date {
+      background: var(--color-primary);
+      padding: 28px 20px;
+      text-align: center;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .event-full__day {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+    }
+    .event-full__month {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent-light);
+      margin-top: 4px;
+    }
+    .event-full__body {
+      padding: 24px 28px;
+    }
+    .event-full__category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+    }
+    .event-full__title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+    .event-full__desc {
+      font-size: 14px;
+      color: var(--color-text-soft);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .event-full__meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+    .event-full__actions {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .cat-service   { background: #E8F0FA; color: #1B3A5C; }
+    .cat-youth     { background: #EEE6FA; color: #6B3A9C; }
+    .cat-family    { background: #FAF0E0; color: #8A5A20; }
+    .cat-women     { background: #F5EAF8; color: #7A3A8A; }
+    .cat-men       { background: #E6F0EA; color: #2A5A35; }
+    .cat-outreach  { background: #E6F5EE; color: #1A5A35; }
+    .cat-training  { background: #FFF3E0; color: #8A5A00; }
+    .recurring-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .recurring-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--color-border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .recurring-card__icon { font-size: 32px; margin-bottom: 10px; }
+    .recurring-card__title { font-weight: 700; color: var(--color-primary); margin-bottom: 4px; }
+    .recurring-card__time { font-size: 13px; color: var(--color-muted); }
+    @media (max-width: 768px) {
+      .event-full { grid-template-columns: 90px 1fr; }
+      .event-full__actions { grid-column: 1/-1; padding-top: 0; padding-left: 90px; flex-direction: row; }
+      .recurring-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .event-full { grid-template-columns: 1fr; }
+      .event-full__date { padding: 16px; flex-direction: row; gap: 8px; }
+      .event-full__day { font-size: 28px; }
+      .event-full__actions { grid-column: 1; padding-left: 24px; }
+      .recurring-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" style="background:transparent; position:fixed;" data-transparent="true">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">✦</div>
+        <div>
+          <div class="nav__logo-text">Grace Community</div>
+          <div class="nav__logo-sub">Church</div>
+        </div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link nav__link--active">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Find Help</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--secondary btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--primary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="ministries.html" class="mobile-nav__link">Ministries</a></li>
+      <li><a href="events.html" class="mobile-nav__link">Events</a></li>
+      <li><a href="sermons.html" class="mobile-nav__link">Sermons</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Find Help</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <span class="page-hero__label">Mark Your Calendar</span>
+      <h1 class="page-hero__title">Upcoming Events</h1>
+      <p class="page-hero__subtitle">
+        There is always something happening at Grace Community — from Sunday services to community outreach,
+        youth nights to marriage seminars. Come join us.
+      </p>
+    </div>
+
+    <!-- Events List -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Filter Tabs -->
+        <div class="events-filter reveal" id="event-filters">
+          <button class="filter-btn filter-btn--active" data-filter="all">All Events</button>
+          <button class="filter-btn" data-filter="service">Services</button>
+          <button class="filter-btn" data-filter="youth">Youth</button>
+          <button class="filter-btn" data-filter="family">Family</button>
+          <button class="filter-btn" data-filter="women">Women</button>
+          <button class="filter-btn" data-filter="men">Men</button>
+          <button class="filter-btn" data-filter="outreach">Outreach</button>
+        </div>
+
+        <!-- Events -->
+        <div style="display:flex; flex-direction:column; gap:16px;" id="events-list">
+
+          <div class="event-full reveal" data-category="service">
+            <div class="event-full__date">
+              <div class="event-full__day">13</div>
+              <div class="event-full__month">Apr</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-service">Special Service</span>
+              <div class="event-full__title">Easter Sunday Celebration</div>
+              <p class="event-full__desc">
+                Join us for one of three powerful Easter services celebrating the resurrection of Jesus.
+                Special worship, communion, and a message for the whole family. Children's ministry available at all services.
+              </p>
+              <div class="event-full__meta">
+                <span>🕖 7:00am · 9:00am · 11:00am</span>
+                <span>📍 Main Auditorium</span>
+                <span>🎟 Free — all are welcome</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="plan-visit.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Share</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="youth">
+            <div class="event-full__date">
+              <div class="event-full__day">18</div>
+              <div class="event-full__month">Apr</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-youth">Youth</span>
+              <div class="event-full__title">Youth Night: Identity</div>
+              <p class="event-full__desc">
+                An electrifying evening for young people to explore one of the most important questions of life: Who am I?
+                Live music, honest conversation, and a message that will stick.
+              </p>
+              <div class="event-full__meta">
+                <span>🕔 4:00pm – 7:00pm</span>
+                <span>📍 Youth Hall</span>
+                <span>👥 Ages 13–25</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="women">
+            <div class="event-full__date">
+              <div class="event-full__day">20</div>
+              <div class="event-full__month">Apr</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-women">Women</span>
+              <div class="event-full__title">Women of Grace — Spring Gathering</div>
+              <p class="event-full__desc">
+                A morning of fellowship, worship, and a powerful devotional for women at every stage of life.
+                Breakfast will be served. Come as you are — everyone is welcome.
+              </p>
+              <div class="event-full__meta">
+                <span>🕙 9:00am – 12:00pm</span>
+                <span>📍 Fellowship Hall</span>
+                <span>🍳 Breakfast included</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="family">
+            <div class="event-full__date">
+              <div class="event-full__day">26</div>
+              <div class="event-full__month">Apr</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-family">Family</span>
+              <div class="event-full__title">Marriage Enrichment Seminar</div>
+              <p class="event-full__desc">
+                A half-day seminar for couples who want to invest in their marriage. Practical tools,
+                honest conversation, and a renewed sense of partnership. Childcare available.
+              </p>
+              <div class="event-full__meta">
+                <span>🕙 10:00am – 2:00pm</span>
+                <span>📍 Conference Room</span>
+                <span>👶 Childcare provided</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="outreach">
+            <div class="event-full__date">
+              <div class="event-full__day">03</div>
+              <div class="event-full__month">May</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-outreach">Outreach</span>
+              <div class="event-full__title">Community Food Drive &amp; Distribution</div>
+              <p class="event-full__desc">
+                Help us serve over 500 families in our community. Volunteers needed for sorting,
+                packing, and distributing food parcels. Bring a friend and make a difference.
+              </p>
+              <div class="event-full__meta">
+                <span>🕗 7:00am – 1:00pm</span>
+                <span>📍 Church Parking Lot</span>
+                <span>🙋 Volunteers needed</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Volunteer</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="men">
+            <div class="event-full__date">
+              <div class="event-full__day">10</div>
+              <div class="event-full__month">May</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-men">Men</span>
+              <div class="event-full__title">Men's Breakfast: Purpose &amp; Identity</div>
+              <p class="event-full__desc">
+                A Saturday morning gathering for men who want honest conversation about what it means
+                to lead well — at home, at work, and in the community. Full breakfast included.
+              </p>
+              <div class="event-full__meta">
+                <span>🕖 7:00am – 10:00am</span>
+                <span>📍 Fellowship Hall</span>
+                <span>🍳 Free breakfast</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="youth">
+            <div class="event-full__date">
+              <div class="event-full__day">17</div>
+              <div class="event-full__month">May</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-youth">Youth</span>
+              <div class="event-full__title">Annual Youth Camp — Sign-Ups Open</div>
+              <p class="event-full__desc">
+                Three days away from the city. Worship under the stars, honest conversations around the fire,
+                and encounters with God that young people never forget. Early-bird spots filling fast.
+              </p>
+              <div class="event-full__meta">
+                <span>📅 May 17–19 (3 days)</span>
+                <span>📍 Camp Evergreen — [Location]</span>
+                <span>🏕 Overnight camp</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">Register</a>
+              <a href="#" class="btn btn--secondary btn--sm">Learn More</a>
+            </div>
+          </div>
+
+          <div class="event-full reveal" data-category="family">
+            <div class="event-full__date">
+              <div class="event-full__day">24</div>
+              <div class="event-full__month">May</div>
+            </div>
+            <div class="event-full__body">
+              <span class="event-full__category cat-family">Family</span>
+              <div class="event-full__title">Family Fun Day &amp; Church Picnic</div>
+              <p class="event-full__desc">
+                Food, games, music, and laughter for the whole family. An outdoor celebration of community
+                where old friends reconnect and new friendships begin. All are welcome — bring a neighbour.
+              </p>
+              <div class="event-full__meta">
+                <span>🕑 2:00pm – 7:00pm</span>
+                <span>📍 Riverside Park, [City]</span>
+                <span>🎈 Free entry</span>
+              </div>
+            </div>
+            <div class="event-full__actions">
+              <a href="contact.html" class="btn btn--primary btn--sm">RSVP</a>
+              <a href="#" class="btn btn--secondary btn--sm">Details</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Recurring Events -->
+    <section class="section section--warm">
+      <div class="container">
+        <div class="section-header section-header--center reveal">
+          <span class="section-header__label">Every Week</span>
+          <h2>Regular Gatherings</h2>
+          <p class="section-header__desc">Our doors are open every week. These are the rhythms that anchor our community.</p>
+        </div>
+        <div class="recurring-grid reveal">
+          <div class="recurring-card">
+            <div class="recurring-card__icon">⛪</div>
+            <div class="recurring-card__title">Sunday Morning Service</div>
+            <div class="recurring-card__time">8:00am &amp; 10:30am · Main Auditorium</div>
+          </div>
+          <div class="recurring-card">
+            <div class="recurring-card__icon">📖</div>
+            <div class="recurring-card__title">Wednesday Bible Study</div>
+            <div class="recurring-card__time">6:30pm · Main Hall</div>
+          </div>
+          <div class="recurring-card">
+            <div class="recurring-card__icon">🙌</div>
+            <div class="recurring-card__title">Friday Youth Night</div>
+            <div class="recurring-card__time">5:00pm · Youth Hall</div>
+          </div>
+          <div class="recurring-card">
+            <div class="recurring-card__icon">🙏</div>
+            <div class="recurring-card__title">Prayer Meeting</div>
+            <div class="recurring-card__time">Tuesdays, 6:00am · Prayer Room</div>
+          </div>
+          <div class="recurring-card">
+            <div class="recurring-card__icon">🎶</div>
+            <div class="recurring-card__title">Worship Team Rehearsal</div>
+            <div class="recurring-card__time">Wednesdays, 6:00pm · Sanctuary</div>
+          </div>
+          <div class="recurring-card">
+            <div class="recurring-card__icon">🏠</div>
+            <div class="recurring-card__title">Home Groups</div>
+            <div class="recurring-card__time">Various days · Across the city</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar CTA -->
+    <section class="section" style="background:var(--color-primary); padding:80px 0; text-align:center;">
+      <div class="container reveal">
+        <div style="max-width:560px; margin:0 auto;">
+          <span class="section-header__label" style="color:var(--color-accent-light);">Stay Connected</span>
+          <h2 style="color:white; margin-bottom:20px;">Never Miss an Event</h2>
+          <p style="color:rgba(255,255,255,0.65); font-size:18px; line-height:1.7; margin-bottom:36px;">
+            Sign up for our newsletter and get upcoming events, sermon series updates,
+            and church announcements delivered to your inbox every week.
+          </p>
+          <form style="display:flex; gap:12px; max-width:440px; margin:0 auto 16px;" id="newsletter-form">
+            <input type="email" class="form-input" placeholder="Your email address" required style="flex:1; background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;" />
+            <button type="submit" class="btn btn--white" style="flex-shrink:0;">Subscribe</button>
+          </form>
+          <p style="color:rgba(255,255,255,0.4); font-size:13px;">No spam. Unsubscribe any time.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo"><div class="footer__logo-mark">✦</div><span class="footer__logo-name">Grace Community Church</span></a>
+          <p class="footer__tagline">A place where every person is known, valued, and loved. Come as you are — you belong here.</p>
+          <div class="footer__service-times">
+            <div class="footer__service-time"><span>Sunday Service</span><span>8:00am &amp; 10:30am</span></div>
+            <div class="footer__service-time"><span>Wednesday Bible Study</span><span>6:30pm</span></div>
+            <div class="footer__service-time"><span>Youth (Fridays)</span><span>5:00pm</span></div>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="beliefs.html" class="footer__link">Our Beliefs</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li><li><a href="find-help.html" class="footer__link">Find Help</a></li></ul></div>
+        <div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="give.html" class="footer__link">Give Online</a></li><li><a href="contact.html#prayer" class="footer__link">Prayer Request</a></li><li><a href="contact.html" class="footer__link">Contact Us</a></li></ul></div>
+        <div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">123 Grace Avenue<br>Your City, State</span></li><li style="margin-top:8px;"><a href="tel:+1234567890" class="footer__link">+1 (234) 567-890</a></li><li><a href="mailto:hello@gracecommunity.church" class="footer__link">hello@gracecommunity.church</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2025 Grace Community Church. All rights reserved.</p><div style="display:flex;gap:16px;"><a href="#" class="footer__link" style="font-size:13px;">Privacy</a><a href="#" class="footer__link" style="font-size:13px;">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/[CHURCH_WHATSAPP_NUMBER]" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Event filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const eventItems = document.querySelectorAll('#events-list .event-full');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+        btn.classList.add('filter-btn--active');
+        const filter = btn.dataset.filter;
+        eventItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'grid';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

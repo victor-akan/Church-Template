@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Give online to Grace Community Church. Support ministry, community outreach, and lives being changed." />
+  <title>Give — Grace Community Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .freq-btn {
+      flex: 1;
+      padding: 10px;
+      border: 1.5px solid var(--color-border);
+      background: white;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-body);
+      color: var(--color-text-soft);
+    }
+    .freq-btn--active, .freq-btn:hover {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
+    }
+    .giving-card {
+      background: white;
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      border: 1px solid var(--color-border-light);
+      box-shadow: var(--shadow-lg);
+    }
+    .impact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-light);
+    }
+    .impact-item__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent-subtle);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+    .trust-badge svg { color: #25D366; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="main-nav" style="background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(0,0,0,0.06);">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark">✦</div><div><div class="nav__logo-text">Grace Community</div><div class="nav__logo-sub" style="color:var(--color-muted);">Church</div></div></a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Find Help</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--primary btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--secondary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav"><button class="mobile-nav__close" id="mobile-nav-close">✕</button><ul class="mobile-nav__links"><li><a href="index.html" class="mobile-nav__link">Home</a></li><li><a href="give.html" class="mobile-nav__link">Give</a></li><li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Find Help</a></li><li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li><li><a href="contact.html" class="mobile-nav__link">Contact</a></li></ul></div>
+
+  <main>
+
+    <div class="page-hero">
+      <span class="page-hero__label">Generosity</span>
+      <h1 class="page-hero__title">Your Gift Changes Lives</h1>
+      <p class="page-hero__subtitle">Every contribution — whether small or large — goes toward building a community where people are healed, families are restored, and hope is found.</p>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+
+          <!-- Giving Form -->
+          <div class="giving-card reveal">
+            <h2 style="margin-bottom:8px;">Give Securely Online</h2>
+            <p style="color:var(--color-muted); font-size:14px; margin-bottom:28px;">All transactions are encrypted and secure.</p>
+
+            <!-- Frequency -->
+            <div class="form-group">
+              <label class="form-label">Giving Frequency</label>
+              <div style="display:flex; gap:8px;">
+                <button class="freq-btn freq-btn--active">One-Time</button>
+                <button class="freq-btn">Weekly</button>
+                <button class="freq-btn">Monthly</button>
+                <button class="freq-btn">Annually</button>
+              </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="form-group">
+              <label class="form-label">Select Amount</label>
+              <div class="giving-options">
+                <div class="giving-amount" data-amount="10"><div class="giving-amount__value">$10</div><div class="giving-amount__label">Blessing</div></div>
+                <div class="giving-amount giving-amount--active" data-amount="50"><div class="giving-amount__value">$50</div><div class="giving-amount__label">Support</div></div>
+                <div class="giving-amount" data-amount="100"><div class="giving-amount__value">$100</div><div class="giving-amount__label">Impact</div></div>
+                <div class="giving-amount" data-amount="custom"><div class="giving-amount__value">✏</div><div class="giving-amount__label">Custom</div></div>
+              </div>
+              <div class="form-group" style="margin-top:12px;">
+                <input type="number" id="custom-amount" class="form-input" placeholder="Enter custom amount ($)" value="50" min="1" />
+              </div>
+            </div>
+
+            <!-- Fund -->
+            <div class="form-group">
+              <label class="form-label" for="giving-fund">Give Toward</label>
+              <select id="giving-fund" class="form-select">
+                <option>General Ministry Fund</option>
+                <option>Building &amp; Facilities</option>
+                <option>Missions &amp; Outreach</option>
+                <option>Youth Ministry</option>
+                <option>Children's Ministry</option>
+                <option>Benevolence Fund (Helping Families in Need)</option>
+              </select>
+            </div>
+
+            <!-- Personal Info -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="g-fname">First Name</label>
+                <input type="text" id="g-fname" class="form-input" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="g-lname">Last Name</label>
+                <input type="text" id="g-lname" class="form-input" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="g-email">Email</label>
+              <input type="email" id="g-email" class="form-input" placeholder="john@email.com" required />
+            </div>
+
+            <!-- Payment Note -->
+            <div style="background:var(--color-warm); border-radius:var(--radius-lg); padding:16px 20px; margin-bottom:20px; border:1px solid var(--color-border-light);">
+              <p style="font-size:13px; color:var(--color-text-soft); line-height:1.6; margin:0;">
+                🔒 <strong>Secure payment powered by Stripe / Paystack.</strong>
+                Your card details are never stored on our servers. A receipt will be sent to your email.
+              </p>
+            </div>
+
+            <button class="btn btn--primary btn--full btn--lg" style="font-size:16px;">
+              Give $50 Securely →
+            </button>
+
+            <!-- Trust badges -->
+            <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px;">
+              <div class="trust-badge">
+                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#25D366" fill="none" stroke-width="2"/></svg>
+                SSL Encrypted
+              </div>
+              <div class="trust-badge">
+                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#25D366" fill="none" stroke-width="2"/></svg>
+                Receipt Emailed
+              </div>
+              <div class="trust-badge">
+                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#25D366" fill="none" stroke-width="2"/></svg>
+                Tax Deductible
+              </div>
+            </div>
+          </div>
+
+          <!-- Why Give & Impact -->
+          <div class="reveal">
+            <span class="section-header__label">Where Your Gift Goes</span>
+            <h2 style="margin-bottom:20px; font-size:clamp(24px,3vw,36px);">Every Dollar Has a Purpose</h2>
+            <p style="font-size:16px; color:var(--color-muted); line-height:1.8; margin-bottom:32px;">
+              We believe in full financial transparency. Here's how contributions are used to serve our community and extend God's kingdom.
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+              <div class="impact-item">
+                <div class="impact-item__icon">⛪</div>
+                <div>
+                  <div style="font-weight:700; color:var(--color-primary); margin-bottom:4px;">Ministry &amp; Programs — 55%</div>
+                  <div style="font-size:13px; color:var(--color-muted);">Preaching, worship, children's ministry, youth, outreach programs, and pastoral care.</div>
+                </div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-item__icon">🏠</div>
+                <div>
+                  <div style="font-weight:700; color:var(--color-primary); margin-bottom:4px;">Facilities &amp; Operations — 25%</div>
+                  <div style="font-size:13px; color:var(--color-muted);">Maintaining and improving the spaces where community happens.</div>
+                </div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-item__icon">🌍</div>
+                <div>
+                  <div style="font-weight:700; color:var(--color-primary); margin-bottom:4px;">Community Outreach — 15%</div>
+                  <div style="font-size:13px; color:var(--color-muted);">Food programs, family support, and local partnerships with other nonprofits.</div>
+                </div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-item__icon">🙏</div>
+                <div>
+                  <div style="font-weight:700; color:var(--color-primary); margin-bottom:4px;">Benevolence — 5%</div>
+                  <div style="font-size:13px; color:var(--color-muted);">Helping members and community members in urgent financial need.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scripture -->
+            <div style="background:linear-gradient(135deg, var(--color-warm), var(--color-accent-subtle)); border-radius:var(--radius-xl); padding:32px; border-left:4px solid var(--color-accent);">
+              <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--color-primary); line-height:1.6; margin-bottom:8px;">
+                "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+              </p>
+              <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-accent);">2 Corinthians 9:7</p>
+            </div>
+
+            <!-- Other ways to give -->
+            <div style="margin-top:28px;">
+              <h4 style="margin-bottom:16px; font-size:16px;">Other Ways to Give</h4>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="display:flex; gap:12px; align-items:center; font-size:14px; color:var(--color-text-soft);">
+                  <span style="width:8px; height:8px; background:var(--color-accent); border-radius:50%;flex-shrink:0;"></span>
+                  <strong>Bank Transfer:</strong> Contact us for account details
+                </div>
+                <div style="display:flex; gap:12px; align-items:center; font-size:14px; color:var(--color-text-soft);">
+                  <span style="width:8px; height:8px; background:var(--color-accent); border-radius:50%;flex-shrink:0;"></span>
+                  <strong>In Person:</strong> Offering during Sunday services
+                </div>
+                <div style="display:flex; gap:12px; align-items:center; font-size:14px; color:var(--color-text-soft);">
+                  <span style="width:8px; height:8px; background:var(--color-accent); border-radius:50%;flex-shrink:0;"></span>
+                  <strong>WhatsApp:</strong> <a href="https://wa.me/[WHATSAPP]" style="color:var(--color-accent);">Message us for help giving</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial on giving -->
+    <section class="section section--warm" id="why">
+      <div class="container">
+        <div class="section-header section-header--center reveal">
+          <span class="section-header__label">The Impact</span>
+          <h2>Stories of What Your Gift Has Done</h2>
+        </div>
+        <div class="grid grid-3 reveal">
+          <div class="testimonial">
+            <p class="testimonial__text">"When our family hit rock bottom financially, the benevolence fund at this church paid our rent for two months. I'll never forget that kindness."</p>
+            <div class="testimonial__author"><div class="testimonial__avatar-placeholder">👤</div><div><div class="testimonial__name">James &amp; Ruth</div><div class="testimonial__role">Church members</div></div></div>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial__text">"Because of the youth ministry — which is funded by giving — my son went from failing school to becoming a leader. The investment was eternal."</p>
+            <div class="testimonial__author"><div class="testimonial__avatar-placeholder">👤</div><div><div class="testimonial__name">Priscilla N.</div><div class="testimonial__role">Member since 2019</div></div></div>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial__text">"Our church's online sermons (possible through generous giving) reached my uncle in another country. He gave his life to Christ watching from his phone."</p>
+            <div class="testimonial__author"><div class="testimonial__avatar-placeholder">👤</div><div><div class="testimonial__name">Michael A.</div><div class="testimonial__role">Church member</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="footer__logo"><div class="footer__logo-mark">✦</div><span class="footer__logo-name">Grace Community Church</span></a><p class="footer__tagline">A place where every person is known, valued, and loved.</p></div><div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="beliefs.html" class="footer__link">Our Beliefs</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li></ul></div><div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="give.html" class="footer__link">Give Online</a></li><li><a href="contact.html#prayer" class="footer__link">Prayer Request</a></li></ul></div><div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">123 Grace Avenue, Your City</span></li><li style="margin-top:8px;"><a href="tel:+1234567890" class="footer__link">+1 (234) 567-890</a></li></ul></div></div><div class="footer__bottom"><p>© 2025 Grace Community Church.</p></div></div></footer>
+
+  <a href="https://wa.me/[WHATSAPP]" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg></a>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plan your first visit to Grace Community Church. Everything you need to know about what to expect, where to park, and how we'll welcome you." />
+  <title>Plan Your Visit — Grace Community Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .what-expect {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .what-expect__icon {
+      width: 56px;
+      height: 56px;
+      background: var(--color-accent-subtle);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .what-expect__title {
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+    .what-expect__text {
+      font-size: 14px;
+      color: var(--color-text-soft);
+      line-height: 1.75;
+    }
+    .timeline-step {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .timeline-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 44px;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-border);
+    }
+    .timeline-step__dot {
+      width: 40px;
+      height: 40px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step__time {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+    .timeline-step__title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+    .timeline-step__text {
+      font-size: 14px;
+      color: var(--color-text-soft);
+      line-height: 1.7;
+    }
+    .faq-mini {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .faq-mini:first-child { border-top: 1px solid var(--color-border-light); }
+    .faq-mini__q {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+    .faq-mini__a {
+      font-size: 14px;
+      color: var(--color-text-soft);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" style="background:transparent; position:fixed;" data-transparent="true">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">✦</div>
+        <div>
+          <div class="nav__logo-text">Grace Community</div>
+          <div class="nav__logo-sub">Church</div>
+        </div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Find Help</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--secondary btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--primary btn--sm nav__link--active">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="ministries.html" class="mobile-nav__link">Ministries</a></li>
+      <li><a href="events.html" class="mobile-nav__link">Events</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Find Help</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <span class="page-hero__label">You're Welcome Here</span>
+      <h1 class="page-hero__title">Plan Your First Visit</h1>
+      <p class="page-hero__subtitle">
+        We know walking into a new church can feel like a big step. We want to make it
+        as simple, warm, and pressure-free as possible. Here's everything you need to know.
+      </p>
+    </div>
+
+    <!-- Main: Form + What to Expect -->
+    <section class="section">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+
+          <!-- Form -->
+          <div class="reveal">
+            <div style="background:white; border-radius:var(--radius-2xl); padding:48px; box-shadow:var(--shadow-lg); border:1px solid var(--color-border-light);">
+              <h2 style="margin-bottom:8px;">I'm Planning to Come</h2>
+              <p style="font-size:14px; color:var(--color-muted); margin-bottom:32px;">
+                Let us know you're coming and we'll make sure someone is ready to welcome you personally.
+              </p>
+              <form id="plan-visit-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="pv-fname">First Name *</label>
+                    <input type="text" id="pv-fname" class="form-input" placeholder="John" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="pv-lname">Last Name</label>
+                    <input type="text" id="pv-lname" class="form-input" placeholder="Smith" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-email">Email Address *</label>
+                  <input type="email" id="pv-email" class="form-input" placeholder="john@email.com" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-phone">Phone (optional)</label>
+                  <input type="tel" id="pv-phone" class="form-input" placeholder="+1 (234) 567-890" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-date">Which Sunday are you planning to attend?</label>
+                  <select id="pv-date" class="form-select">
+                    <option value="">Choose a Sunday</option>
+                    <option>April 13 — Easter Sunday</option>
+                    <option>April 20</option>
+                    <option>April 27</option>
+                    <option>May 4</option>
+                    <option>May 11</option>
+                    <option>May 18</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-service">Preferred service time</label>
+                  <select id="pv-service" class="form-select">
+                    <option value="">Select a time</option>
+                    <option>8:00am</option>
+                    <option>10:30am</option>
+                    <option>No preference</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-group">Who's coming with you?</label>
+                  <select id="pv-group" class="form-select">
+                    <option value="">Select</option>
+                    <option>Just me</option>
+                    <option>Me + a friend</option>
+                    <option>Couple</option>
+                    <option>Family with children</option>
+                    <option>Group of friends</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pv-note">Anything you'd like us to know?</label>
+                  <textarea id="pv-note" class="form-input form-textarea" placeholder="Special needs, questions, or just a hello..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full btn--lg" style="font-size:16px;">
+                  I'm Coming → Send My Details
+                </button>
+                <p style="font-size:12px; color:var(--color-muted); text-align:center; margin-top:12px;">
+                  No spam. We'll send you one friendly welcome email and be ready for you on Sunday.
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <!-- What to expect -->
+          <div class="reveal">
+            <span class="section-header__label">No Surprises</span>
+            <h2 style="margin-bottom:32px;">What to Expect</h2>
+            <div style="display:flex; flex-direction:column; gap:24px; margin-bottom:48px;">
+              <div class="what-expect">
+                <div class="what-expect__icon">👋</div>
+                <div>
+                  <div class="what-expect__title">A Warm Welcome</div>
+                  <p class="what-expect__text">From the parking lot to the front door, our Welcome Team is there. If you let us know you're coming, we'll have someone specifically looking out for you.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">👔</div>
+                <div>
+                  <div class="what-expect__title">Come as You Are</div>
+                  <p class="what-expect__text">Seriously — there is no dress code. Some people come in suits. Some come in jeans. We just want you comfortable and present.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">🎶</div>
+                <div>
+                  <div class="what-expect__title">Worship &amp; Music</div>
+                  <p class="what-expect__text">Contemporary worship music — energetic, heartfelt, and led by a talented team. You can sing along, stand quietly, or just take it in. All of that is welcome.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">📖</div>
+                <div>
+                  <div class="what-expect__title">Real, Practical Teaching</div>
+                  <p class="what-expect__text">Our messages are honest, biblically grounded, and directly applicable to real life. No jargon. No shouting. Just truth told with love.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">🧒</div>
+                <div>
+                  <div class="what-expect__title">Children Are Cared For</div>
+                  <p class="what-expect__text">Kids from birth through grade 6 have their own age-appropriate ministry during the service. Safe, fun, and full of joy. You'll need to register them at the Kids Desk on arrival.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">⏱</div>
+                <div>
+                  <div class="what-expect__title">How Long Is the Service?</div>
+                  <p class="what-expect__text">Services typically run 75–90 minutes. Worship: ~25 minutes. Announcements: ~5 minutes. Message: ~40 minutes. Response &amp; prayer: ~10 minutes.</p>
+                </div>
+              </div>
+              <div class="what-expect">
+                <div class="what-expect__icon">🅿️</div>
+                <div>
+                  <div class="what-expect__title">Parking</div>
+                  <p class="what-expect__text">Free parking is available in our main lot and the overflow lot on Grace Lane. Ushers are available to help on busy Sundays. Arrive 10–15 minutes early to settle in.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sunday Timeline -->
+    <section class="section section--warm">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+
+          <!-- Timeline -->
+          <div class="reveal">
+            <span class="section-header__label">A Typical Sunday</span>
+            <h2 style="margin-bottom:32px;">Your Morning, Step by Step</h2>
+            <div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">🅿️</div>
+                <div>
+                  <div class="timeline-step__time">Arrive Early</div>
+                  <div class="timeline-step__title">Park &amp; Be Welcomed</div>
+                  <p class="timeline-step__text">Pull in and our parking team will guide you. Greeters at the entrance will say hello and point you in the right direction.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">☕</div>
+                <div>
+                  <div class="timeline-step__time">Pre-Service</div>
+                  <div class="timeline-step__title">Coffee &amp; Connections</div>
+                  <p class="timeline-step__text">Grab a free coffee or tea in the foyer. It's a relaxed, friendly environment — no pressure to perform or be anything other than yourself.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">🎶</div>
+                <div>
+                  <div class="timeline-step__time">Service Begins</div>
+                  <div class="timeline-step__title">Worship</div>
+                  <p class="timeline-step__text">The service opens with 4–5 songs. Stand, sit, sing along — however you feel comfortable engaging.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">📖</div>
+                <div>
+                  <div class="timeline-step__time">Mid-Service</div>
+                  <div class="timeline-step__title">The Message</div>
+                  <p class="timeline-step__text">Our pastor delivers a practical, scripture-based message. We encourage you to bring a Bible or use our app to follow along.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">🙏</div>
+                <div>
+                  <div class="timeline-step__time">Closing</div>
+                  <div class="timeline-step__title">Response &amp; Prayer</div>
+                  <p class="timeline-step__text">We close with a time of response — an opportunity for personal prayer, communion (monthly), and connection. No pressure. Just space.</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-step__dot">👥</div>
+                <div>
+                  <div class="timeline-step__time">After Service</div>
+                  <div class="timeline-step__title">First-Time Guest Welcome</div>
+                  <p class="timeline-step__text">We'd love to meet you! Head to the First Time Guest desk in the foyer for a welcome pack, introductions to our team, and answers to any questions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location + FAQs -->
+          <div class="reveal">
+            <span class="section-header__label">Find Us</span>
+            <h2 style="margin-bottom:24px;">Location &amp; Directions</h2>
+
+            <!-- Map placeholder -->
+            <div style="background:linear-gradient(135deg, #1B3A5C, #2A5280); border-radius:var(--radius-xl); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; margin-bottom:24px; color:rgba(255,255,255,0.4); font-size:14px; font-family:var(--font-body);">
+              <!--
+                REPLACE with Google Maps embed:
+                <iframe src="https://maps.google.com/..." width="100%" height="100%" style="border:0; border-radius:var(--radius-xl);" loading="lazy"></iframe>
+              -->
+              [Google Maps Embed]
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+              <div style="display:flex; gap:12px; font-size:14px; color:var(--color-text-soft);">
+                <span style="font-size:18px;">📍</span>
+                <div><strong style="color:var(--color-primary);">Address:</strong><br>123 Grace Avenue, Your City, State ZIP</div>
+              </div>
+              <div style="display:flex; gap:12px; font-size:14px; color:var(--color-text-soft);">
+                <span style="font-size:18px;">🕗</span>
+                <div><strong style="color:var(--color-primary);">Services:</strong><br>Sunday 8:00am and 10:30am</div>
+              </div>
+              <div style="display:flex; gap:12px; font-size:14px; color:var(--color-text-soft);">
+                <span style="font-size:18px;">📞</span>
+                <div><strong style="color:var(--color-primary);">Phone:</strong><br><a href="tel:+1234567890" style="color:var(--color-accent);">+1 (234) 567-890</a></div>
+              </div>
+              <div style="display:flex; gap:12px; font-size:14px; color:var(--color-text-soft);">
+                <span style="font-size:18px;">💬</span>
+                <div><strong style="color:var(--color-primary);">WhatsApp:</strong><br><a href="https://wa.me/[WHATSAPP]" style="color:var(--color-accent);">Message us any time</a></div>
+              </div>
+            </div>
+
+            <!-- Quick FAQs -->
+            <h3 style="margin-bottom:16px; font-size:20px;">Quick Answers</h3>
+            <div>
+              <div class="faq-mini">
+                <div class="faq-mini__q">Do I need to book a seat in advance?</div>
+                <p class="faq-mini__a">No booking required — walk-ins are always welcome. If you fill out our visit form, we'll just make sure someone is looking out for you.</p>
+              </div>
+              <div class="faq-mini">
+                <div class="faq-mini__q">What about my children?</div>
+                <p class="faq-mini__a">Children ages 0–12 have their own ministry during the service. You'll check them in at the Kids Desk when you arrive. It's a safe, vetted environment.</p>
+              </div>
+              <div class="faq-mini">
+                <div class="faq-mini__q">Will I be asked to give money?</div>
+                <p class="faq-mini__a">We never pressure first-time guests to give. An offering is collected during the service — participation is entirely optional and never required.</p>
+              </div>
+              <div class="faq-mini">
+                <div class="faq-mini__q">Is it okay if I'm not a Christian?</div>
+                <p class="faq-mini__a">Absolutely. We welcome people at every point on their spiritual journey — curious, skeptical, or exploring for the first time. Come as you are.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripture banner -->
+    <div class="scripture-banner">
+      <p class="scripture-banner__text">
+        "Welcome one another as Christ has welcomed you,<br>for the glory of God."
+      </p>
+      <p class="scripture-banner__ref">Romans 15:7</p>
+    </div>
+
+    <!-- WhatsApp CTA -->
+    <section class="section" style="background:var(--color-primary); padding:80px 0; text-align:center;">
+      <div class="container reveal">
+        <div style="max-width:560px; margin:0 auto;">
+          <div style="font-size:56px; margin-bottom:20px;">💬</div>
+          <h2 style="color:white; margin-bottom:16px;">Have a Question Before You Visit?</h2>
+          <p style="color:rgba(255,255,255,0.65); font-size:18px; line-height:1.7; margin-bottom:32px;">
+            Message us on WhatsApp any time — our team typically replies within a few hours.
+            No question is too small.
+          </p>
+          <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+            <a href="https://wa.me/[CHURCH_WHATSAPP_NUMBER]" class="btn btn--white btn--lg" target="_blank" rel="noopener">
+              Chat on WhatsApp
+            </a>
+            <a href="contact.html" class="btn btn--ghost btn--lg">Send Us a Message</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo"><div class="footer__logo-mark">✦</div><span class="footer__logo-name">Grace Community Church</span></a>
+          <p class="footer__tagline">A place where every person is known, valued, and loved. Come as you are — you belong here.</p>
+          <div class="footer__service-times">
+            <div class="footer__service-time"><span>Sunday Service</span><span>8:00am &amp; 10:30am</span></div>
+            <div class="footer__service-time"><span>Wednesday Bible Study</span><span>6:30pm</span></div>
+            <div class="footer__service-time"><span>Youth (Fridays)</span><span>5:00pm</span></div>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Explore</h4><ul class="footer__links"><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="beliefs.html" class="footer__link">Our Beliefs</a></li><li><a href="ministries.html" class="footer__link">Ministries</a></li><li><a href="sermons.html" class="footer__link">Sermons</a></li><li><a href="find-help.html" class="footer__link">Find Help</a></li></ul></div>
+        <div><h4 class="footer__col-title">Connect</h4><ul class="footer__links"><li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li><li><a href="give.html" class="footer__link">Give Online</a></li><li><a href="contact.html#prayer" class="footer__link">Prayer Request</a></li><li><a href="contact.html" class="footer__link">Contact Us</a></li></ul></div>
+        <div><h4 class="footer__col-title">Find Us</h4><ul class="footer__links"><li><span class="footer__link" style="cursor:default;color:rgba(255,255,255,0.55);">123 Grace Avenue<br>Your City, State</span></li><li style="margin-top:8px;"><a href="tel:+1234567890" class="footer__link">+1 (234) 567-890</a></li><li><a href="mailto:hello@gracecommunity.church" class="footer__link">hello@gracecommunity.church</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>© 2025 Grace Community Church. All rights reserved.</p><div style="display:flex;gap:16px;"><a href="#" class="footer__link" style="font-size:13px;">Privacy</a><a href="#" class="footer__link" style="font-size:13px;">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/[CHURCH_WHATSAPP_NUMBER]" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

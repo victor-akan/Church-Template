@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find a message, prayer, and support for exactly what you're going through. You are not alone." />
+  <title>Find Help — Grace Community Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Find Help page-specific overrides ── */
+    body { background: var(--color-white); }
+
+    .fh-category-section {
+      padding: 80px 0;
+    }
+
+    .fh-category-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-label);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .fh-category-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 44px);
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .fh-category-sub {
+      font-size: 17px;
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+
+    .suboption-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--color-warm);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-soft);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .suboption-chip:hover {
+      background: var(--color-accent-subtle);
+      border-color: var(--color-accent);
+      color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+
+    .category-visual {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .category-visual__bg {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform var(--transition-smooth);
+    }
+
+    .category-visual:hover .category-visual__bg {
+      transform: scale(1.03);
+    }
+
+    .divider-section {
+      border: none;
+      border-top: 1px solid var(--color-border-light);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" style="background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); box-shadow:0 1px 0 rgba(0,0,0,0.06);">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">✦</div>
+        <div>
+          <div class="nav__logo-text">Grace Community</div>
+          <div class="nav__logo-sub" style="color:var(--color-muted);">Church</div>
+        </div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="sermons.html" class="nav__link">Sermons</a></li>
+        <li><a href="ministries.html" class="nav__link">Ministries</a></li>
+        <li><a href="events.html" class="nav__link">Events</a></li>
+        <li><a href="find-help.html" class="nav__link nav__link--find-help">Find Help</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="give.html" class="btn btn--secondary btn--sm">Give</a>
+        <a href="plan-visit.html" class="btn btn--primary btn--sm">Plan a Visit</a>
+        <button class="nav__menu-btn" id="menu-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__close" id="mobile-nav-close">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav__link">About</a></li>
+      <li><a href="sermons.html" class="mobile-nav__link">Sermons</a></li>
+      <li><a href="find-help.html" class="mobile-nav__link mobile-nav__link--find-help">Find Help</a></li>
+      <li><a href="plan-visit.html" class="mobile-nav__link">Plan a Visit</a></li>
+      <li><a href="give.html" class="mobile-nav__link">Give</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- ===================================================================
+         HERO — Find Help
+         Tone: Deeply human, calm, safe, not religious-jargon-heavy
+    ==================================================================== -->
+    <div class="find-help-hero">
+      <div class="find-help-hero__content">
+        <div class="find-help-hero__eyebrow">
+          <span>💛</span>
+          You are seen. You are not alone.
+        </div>
+        <h1 class="find-help-hero__title">How are you<br>feeling today?</h1>
+        <p class="find-help-hero__sub">
+          You don't have to explain everything or have it all figured out.
+          Find a message for what you're facing right now.
+        </p>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         CATEGORY 1 — When You're Hurting
+         IMAGE: Unsplash search keywords: "person window light contemplative"
+         or "rain window bokeh dark blue" or "hands held prayer quiet"
+         Source: unsplash.com | pexels.com
+         Visual tone: Deep blue, soft light, introspective but not hopeless
+    ==================================================================== -->
+    <section class="fh-category-section" id="hurting">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+          <div class="reveal">
+            <span class="fh-category-label">💙 Category 01</span>
+            <h2 class="fh-category-title">When You're Hurting</h2>
+            <p class="fh-category-sub">
+              Pain is real. Grief is real. Whatever broke inside you — you don't have to carry it alone anymore.
+              There is a message here for exactly where you are.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <a href="find-help-detail.html?cat=hurting&sub=grief" class="suboption-chip">When you're grieving a loss</a>
+              <a href="find-help-detail.html?cat=hurting&sub=pain" class="suboption-chip">When the pain feels physical</a>
+              <a href="find-help-detail.html?cat=hurting&sub=betrayal" class="suboption-chip">When you've been betrayed</a>
+              <a href="find-help-detail.html?cat=hurting&sub=empty" class="suboption-chip">When you feel completely empty</a>
+              <a href="find-help-detail.html?cat=hurting&sub=unfair" class="suboption-chip">When life feels deeply unfair</a>
+            </div>
+            <a href="find-help-detail.html?cat=hurting" class="btn btn--primary">Find a Message for This</a>
+          </div>
+
+          <div class="category-visual reveal">
+            <div class="category-visual__bg" style="width:100%; height:100%; min-height:380px; position:relative; overflow:hidden;">
+              <img src="https://picsum.photos/seed/help-solitude/800/600" alt="A quiet, contemplative moment" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,34,56,0.55),rgba(27,58,92,0.35));"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider-section" />
+
+    <!-- ===================================================================
+         CATEGORY 2 — When Your Mind Is Overwhelmed
+         IMAGE: Unsplash search "blurred city lights bokeh" or "person overwhelmed
+         hands on face" or "still water calm lake morning mist"
+         Visual tone: Teal-blue, slightly blurry/soft, introspective calm
+    ==================================================================== -->
+    <section class="fh-category-section" id="overwhelmed">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+          <div class="category-visual reveal" style="order:1;">
+            <div class="category-visual__bg" style="width:100%; height:100%; min-height:380px; position:relative; overflow:hidden;">
+              <img src="https://picsum.photos/seed/help-calm-water/800/600" alt="Still water at dawn" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,37,53,0.5),rgba(42,96,112,0.3));"></div>
+            </div>
+          </div>
+
+          <div class="reveal" style="order:2;">
+            <span class="fh-category-label">🌊 Category 02</span>
+            <h2 class="fh-category-title">When Your Mind Is<br>Overwhelmed</h2>
+            <p class="fh-category-sub">
+              Anxiety, racing thoughts, pressure from every direction.
+              Your mind deserves rest. Let's find something that speaks peace into the noise.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <a href="find-help-detail.html?cat=overwhelmed&sub=anxiety" class="suboption-chip">When anxiety won't stop</a>
+              <a href="find-help-detail.html?cat=overwhelmed&sub=overthinking" class="suboption-chip">When you can't stop overthinking</a>
+              <a href="find-help-detail.html?cat=overwhelmed&sub=pressure" class="suboption-chip">When pressure is suffocating</a>
+              <a href="find-help-detail.html?cat=overwhelmed&sub=burnout" class="suboption-chip">When you're burned out and tired</a>
+            </div>
+            <a href="find-help-detail.html?cat=overwhelmed" class="btn btn--primary">Find Rest for Your Mind</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider-section" />
+
+    <!-- ===================================================================
+         CATEGORY 3 — When You Feel Lost
+         IMAGE: Unsplash search "fog forest path alone" or "lone person landscape
+         wide open" or "misty road disappearing horizon"
+         Visual tone: Purple-grey, ethereal mist. Suggests searching but beauty ahead.
+    ==================================================================== -->
+    <section class="fh-category-section" id="lost">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+          <div class="reveal">
+            <span class="fh-category-label">🌅 Category 03</span>
+            <h2 class="fh-category-title">When You Feel Lost</h2>
+            <p class="fh-category-sub">
+              Not knowing who you are, where you're going, or what's next — that feeling is more common
+              than you think. You're not wandering alone.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <a href="find-help-detail.html?cat=lost&sub=purpose" class="suboption-chip">When you've lost your purpose</a>
+              <a href="find-help-detail.html?cat=lost&sub=identity" class="suboption-chip">When you don't know who you are</a>
+              <a href="find-help-detail.html?cat=lost&sub=direction" class="suboption-chip">When you don't know what to do</a>
+              <a href="find-help-detail.html?cat=lost&sub=faith" class="suboption-chip">When your faith feels shaky</a>
+              <a href="find-help-detail.html?cat=lost&sub=distance" class="suboption-chip">When you feel far from God</a>
+            </div>
+            <a href="find-help-detail.html?cat=lost" class="btn btn--primary">Find Direction Here</a>
+          </div>
+
+          <div class="category-visual reveal">
+            <div class="category-visual__bg" style="width:100%; height:100%; min-height:380px; position:relative; overflow:hidden;">
+              <img src="https://picsum.photos/seed/help-forest-path/800/600" alt="A misty path leading toward light" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,21,53,0.55),rgba(58,48,96,0.3));"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider-section" />
+
+    <!-- ===================================================================
+         CATEGORY 4 — When You're Dealing With Relationships
+         IMAGE: Unsplash search "two people silhouette sunset" or "hands reaching
+         across" or "couple distance tension" or "family reunion warm"
+         Visual tone: Warm amber/sunset tones. Human connection theme.
+    ==================================================================== -->
+    <section class="fh-category-section" id="relationships">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+          <div class="category-visual reveal" style="order:1;">
+            <div class="category-visual__bg" style="width:100%; height:100%; min-height:380px; position:relative; overflow:hidden;">
+              <img src="https://picsum.photos/seed/help-people-warm/800/600" alt="Two people in the warm light of connection" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(42,26,16,0.5),rgba(106,58,32,0.25));"></div>
+            </div>
+          </div>
+
+          <div class="reveal" style="order:2;">
+            <span class="fh-category-label">🤝 Category 04</span>
+            <h2 class="fh-category-title">When You're Dealing<br>With Relationships</h2>
+            <p class="fh-category-sub">
+              Marriage, family, friendships, broken trust — relationships are where we're most
+              hurt and most healed. You're not the first to feel this way.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <a href="find-help-detail.html?cat=relationships&sub=marriage" class="suboption-chip">When your marriage is struggling</a>
+              <a href="find-help-detail.html?cat=relationships&sub=loneliness" class="suboption-chip">When you feel deeply lonely</a>
+              <a href="find-help-detail.html?cat=relationships&sub=broken" class="suboption-chip">When a relationship is broken</a>
+              <a href="find-help-detail.html?cat=relationships&sub=forgiveness" class="suboption-chip">When you need to forgive</a>
+              <a href="find-help-detail.html?cat=relationships&sub=family" class="suboption-chip">When family is the source of pain</a>
+            </div>
+            <a href="find-help-detail.html?cat=relationships" class="btn btn--primary">Find a Message for This</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider-section" />
+
+    <!-- ===================================================================
+         CATEGORY 5 — When You Need Hope
+         IMAGE: Unsplash search "sunrise over mountains" or "golden light clouds
+         dawn" or "light breaking through storm"
+         Visual tone: Bright gold/amber. Uplifting, expanding. Light breaking through.
+    ==================================================================== -->
+    <section class="fh-category-section" id="hope">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+          <div class="reveal">
+            <span class="fh-category-label">✨ Category 05</span>
+            <h2 class="fh-category-title">When You Need Hope</h2>
+            <p class="fh-category-sub">
+              Some seasons feel like the light has gone out completely.
+              But hope isn't wishful thinking — it's a promise. Let's find it together.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+              <a href="find-help-detail.html?cat=hope&sub=waiting" class="suboption-chip">When you're tired of waiting</a>
+              <a href="find-help-detail.html?cat=hope&sub=discouraged" class="suboption-chip">When you feel defeated</a>
+              <a href="find-help-detail.html?cat=hope&sub=future" class="suboption-chip">When the future looks dark</a>
+              <a href="find-help-detail.html?cat=hope&sub=miracle" class="suboption-chip">When you need a miracle</a>
+            </div>
+            <a href="find-help-detail.html?cat=hope" class="btn btn--primary">Find Hope Here</a>
+          </div>
+
+          <div class="category-visual reveal">
+            <div class="category-visual__bg" style="width:100%; height:100%; min-height:380px; position:relative; overflow:hidden;">
+              <img src="https://picsum.photos/seed/help-sunrise-gold/800/600" alt="Golden sunrise breaking through the clouds" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,21,0,0.4),rgba(106,85,16,0.15));"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider-section" />
+
+    <!-- ===================================================================
+         CATEGORY 6 — When You're Struggling to Keep Going
+         (Phrased gently — addresses suicidal ideation, severe depression
+          in a compassionate, non-clinical way)
+         IMAGE: Unsplash search "person sitting quiet moment dawn" or
+         "candle single light darkness" or "road long empty but light ahead"
+         Visual tone: Very dark with a SINGLE point of light.
+                      NOT distressing — quietly beautiful and hopeful.
+    ==================================================================== -->
+    <section class="fh-category-section" id="struggling" style="background: linear-gradient(180deg, var(--color-white) 0%, var(--color-warm) 100%);">
+      <div class="container">
+
+        <!-- Special banner for this section -->
+        <div style="
+          background: linear-gradient(135deg, #0D1F35 0%, #1B3A5C 100%);
+          border-radius: var(--radius-2xl);
+          padding: 56px;
+          position:relative; overflow:hidden;
+        " class="reveal">
+
+          <div style="
+            position:absolute; top:-60px; right:-60px;
+            width:300px; height:300px;
+            background: radial-gradient(circle, rgba(201,145,61,0.12) 0%, transparent 70%);
+          "></div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;">
+            <div>
+              <span class="fh-category-label" style="color:var(--color-accent-light);">🕯 Category 06</span>
+              <h2 style="color:white; font-size:clamp(28px,3.5vw,40px); margin-bottom:16px; line-height:1.2;">
+                When You're Finding It Hard<br>to Keep Going
+              </h2>
+              <p style="color:rgba(255,255,255,0.65); font-size:17px; line-height:1.8; margin-bottom:28px;">
+                If life feels like too much right now — if you're exhausted at the deepest level —
+                please know: you matter. You are loved. And you are not a burden.
+                There is someone here who wants to talk with you.
+              </p>
+
+              <!-- Crisis line notice -->
+              <div style="
+                background:rgba(201,145,61,0.12);
+                border: 1px solid rgba(201,145,61,0.3);
+                border-radius: var(--radius-lg);
+                padding: 16px 20px;
+                margin-bottom:28px;
+              ">
+                <p style="color:var(--color-accent-light); font-size:14px; line-height:1.6; margin:0;">
+                  <strong style="color:white;">If you're in immediate crisis</strong>, please call or text a crisis line:
+                  <strong style="color:var(--color-accent-light);">988</strong> (US) ·
+                  <strong style="color:var(--color-accent-light);">116 123</strong> (Samaritans, UK) ·
+                  Or <a href="contact.html#prayer" style="color:var(--color-accent-light); text-decoration:underline;">contact us directly</a>.
+                </p>
+              </div>
+
+              <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;">
+                <a href="find-help-detail.html?cat=struggling&sub=numb" class="suboption-chip" style="border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.75);">When you feel completely numb</a>
+                <a href="find-help-detail.html?cat=struggling&sub=invisible" class="suboption-chip" style="border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.75);">When you feel invisible to everyone</a>
+                <a href="find-help-detail.html?cat=struggling&sub=weight" class="suboption-chip" style="border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.75);">When the weight feels unbearable</a>
+                <a href="find-help-detail.html?cat=struggling&sub=meaning" class="suboption-chip" style="border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.75);">When you're searching for a reason</a>
+              </div>
+
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a href="find-help-detail.html?cat=struggling" class="btn btn--white">Find a Message</a>
+                <a href="https://wa.me/[CHURCH_WHATSAPP]" class="btn btn--ghost" target="_blank">Talk to Someone Now</a>
+              </div>
+            </div>
+
+            <div style="border-radius: var(--radius-xl); overflow:hidden; aspect-ratio:4/3; position:relative;">
+              <img src="https://picsum.photos/seed/help-candle-dawn/800/600" alt="A quiet, gentle dawn — there is light ahead" style="width:100%;height:100%;object-fit:cover;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,13,26,0.65),rgba(13,31,53,0.45));"></div>
+              <!-- kept for reference below --><div style="display:none;">
+                [Image: Single candle / quiet dawn]<br>
+                <small>Tone: dark but quietly hopeful</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PRAYER REQUEST — Bottom CTA
+    ==================================================================== -->
+    <section class="section" style="background: var(--color-cream);">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;" class="reveal">
+
+          <div>
+            <span class="section-header__label">You're Not Alone</span>
+            <h2 style="margin-bottom:20px;">Someone Is Ready<br>to Pray With You</h2>
+            <p style="font-size:17px; color:var(--color-muted); line-height:1.8; margin-bottom:24px;">
+              Our prayer team reads every request personally. We won't judge you.
+              We won't send you a pamphlet. We will simply pray — and if you'd like to talk, we're here.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; gap:12px; align-items:center;">
+                <div style="width:40px;height:40px;background:var(--color-accent-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">📧</div>
+                <span style="font-size:15px; color:var(--color-text-soft);">Send a prayer request using the form</span>
+              </div>
+              <div style="display:flex; gap:12px; align-items:center;">
+                <div style="width:40px;height:40px;background:var(--color-accent-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">💬</div>
+                <span style="font-size:15px; color:var(--color-text-soft);">Chat with us directly on WhatsApp</span>
+              </div>
+              <div style="display:flex; gap:12px; align-items:center;">
+                <div style="width:40px;height:40px;background:var(--color-accent-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">📍</div>
+                <span style="font-size:15px; color:var(--color-text-soft);">Come in person — we keep Tues & Thurs open for walk-ins</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prayer Request Form -->
+          <div class="prayer-form" id="prayer">
+            <h3 style="margin-bottom:8px;">Send a Prayer Request</h3>
+            <p style="font-size:14px; color:var(--color-muted); margin-bottom:28px;">This is private. Only our prayer team will see it.</p>
+            <form id="prayer-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="p-name">Your Name</label>
+                  <input type="text" id="p-name" class="form-input" placeholder="First name is fine" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="p-contact">Email or WhatsApp</label>
+                  <input type="text" id="p-contact" class="form-input" placeholder="Optional" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="prayer-message">
+                  What would you like us to pray about?
+                </label>
+                <textarea id="prayer-message" class="form-textarea" placeholder="You can share as little or as much as you'd like. There are no wrong words here." maxlength="500"></textarea>
+                <div class="form-hint" style="text-align:right;" id="prayer-counter">0 / 500</div>
+              </div>
+              <div class="form-group">
+                <label class="form-check">
+                  <input type="checkbox" />
+                  <span class="form-check__label">I'd like someone to follow up with me personally</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="form-check">
+                  <input type="checkbox" />
+                  <span class="form-check__label">Keep this anonymous — don't share my name with anyone</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn--primary btn--full btn--lg">
+                Send My Prayer Request 🙏
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (abbreviated) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <div class="footer__logo-mark">✦</div>
+            <span class="footer__logo-name">Grace Community Church</span>
+          </a>
+          <p class="footer__tagline">A place where every person is known, valued, and loved.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Quick Help</h4>
+          <ul class="footer__links">
+            <li><a href="find-help.html#hurting" class="footer__link">When You're Hurting</a></li>
+            <li><a href="find-help.html#overwhelmed" class="footer__link">When Overwhelmed</a></li>
+            <li><a href="find-help.html#lost" class="footer__link">When You Feel Lost</a></li>
+            <li><a href="find-help.html#hope" class="footer__link">When You Need Hope</a></li>
+            <li><a href="find-help.html#struggling" class="footer__link">When It's Very Hard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html#prayer" class="footer__link">Prayer Request</a></li>
+            <li><a href="plan-visit.html" class="footer__link">Plan a Visit</a></li>
+            <li><a href="sermons.html" class="footer__link">Watch Sermons</a></li>
+            <li><a href="contact.html" class="footer__link">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Reach Us</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+1234567890" class="footer__link">+1 (234) 567-890</a></li>
+            <li><a href="https://wa.me/[WHATSAPP]" class="footer__link">WhatsApp Us</a></li>
+            <li><a href="mailto:hello@gracecommunity.church" class="footer__link">hello@gracecommunity.church</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Grace Community Church. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/[CHURCH_WHATSAPP_NUMBER]" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
